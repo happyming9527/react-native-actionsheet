@@ -37,7 +37,12 @@ class ActionSheet extends React.Component {
 	hide(index) {
 		this._hideOverlay(() => this.setState({visible: false}));
 		this._hideSheet();
-		this.props.onPress(index);
+		if (index) {
+			this.props.onPress(index);
+		}
+		if (this.props.hideCallback) {
+			this.props.hideCallback(index)
+		}
 	}
 
 	_showOverlay() {
